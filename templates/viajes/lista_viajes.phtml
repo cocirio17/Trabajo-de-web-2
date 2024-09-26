@@ -1,0 +1,18 @@
+<?php require 'templates/layout/hedader.phtml' ?>
+
+<?php require 'templates/viajes/formulario_viajes.phtml' ?>
+
+<ul>
+    <?php foreach ($viajes as $viaje): ?>
+        <li> 
+                  
+            <?= $viaje->destino_inicio ?> a <?= $viaje->destino_fin ?> a las: <?= $viaje->fecha_salida ?>
+
+        <a href="eliminar/<?= $viaje->id ?>" type="button">Borrar</a>    
+        </li>
+
+    <?php endforeach ?>
+</ul>
+
+
+<?php require 'templates/layout/pieDepagina.phtml' ?>

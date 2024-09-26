@@ -1,5 +1,5 @@
 Trabajo practico de web 2
-integratnes : 
+integratnes : COCIRIO FRANCISCO, BEHERAN BAZTERRECHEA, FELIPE TOMAS (BEHERAN, FELIPE) 
 
 
 
