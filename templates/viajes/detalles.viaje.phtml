@@ -1,0 +1,14 @@
+<?php require 'templates/layout/hedader.phtml' ?>
+
+<div class="w-50 p-5">
+    <h2 class="display-6">Detalles:</h2>
+    <ul class="list-group">
+        <li class="list-group-item">Destino de inicio: <?= $viaje->destino_inicio ?></li>
+        <li class="list-group-item">Destino de llegada: <?= $viaje->destino_fin ?> </li>
+        <li class="list-group-item">Fecha de salida: <?= $viaje->fecha_salida ?></li>
+        <li class="list-group-item">Precio: $<?= $viaje->precio ?> ARS</li>
+        <li class="list-group-item"> Pasajeros: <?= $persona->nombre ?> <?= $persona->apellido ?> </li>
+    </ul>
+</div>
+
+<?php require 'templates/layout/pieDepagina.phtml' ?>
