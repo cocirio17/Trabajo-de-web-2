@@ -1,42 +1,103 @@
 <?php
 require_once './app/viajes/viaje.contralador.php';
+require_once './app/autenticacion/Autenticar.controlador.php';
+require_once './app/general/Geberal.contolador.php';
+
+
 
 // base_url para redirecciones y base tag
-define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
+ 
+$autenticar = new AuthController();
+$controllerViajes = new viajesContralador();
+$controladorGeneral = new generalContralador();
 
-$action = 'listar'; // accion por defecto si no se envia ninguna
-if (!empty( $_GET['action'])) {
+
+$action = 'inicio'; // accion por defecto si no se envia ninguna
+if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
 
-// tabla de ruteo
 
-// listar  -> viajesContralador->mostraViaje();
-// nuevo-viaje  -> viajesContralador->agregarViaje();;
-// eliminar/:ID  -> viajesContralador->borrarViaje($id);
-// editar/:ID -> viajesContralador->editarViaje($id_viaje, $destino_inicio, $destino_fin, $fecha_salida);
+
+/*
+/ (tabla de ruteo)
+│
+├── inicio                    -> $controladorGeneral->mostraInicio();
+│
+├── listarViajes              -> $controllerViajes->mostraViajes();
+│
+├── verMasViajes/:ID          -> $controllerViajes->mostrarViaje($params[1]);
+│
+├── formularioViajes          -> $controllerViajes->mostrarformViajes();
+│
+├── nuevo-viaje               -> $controllerViajes->agregarViaje();
+│
+├── eliminarViaje/:ID         -> $controllerViajes->borrarViaje($params[1]);
+│
+├── editarViaje/:ID           -> $controllerViajes->mostarFormEditViaje($params[1]);
+│
+├── modificarViaje/:ID        -> $controllerViajes->modificarViaje($params[1]);
+│
+├── login                     -> $autenticar->mostrarLogin();
+│
+└── autentificación           -> $autenticar->autentificacion();
+*/
 
 // parsea la accion para separar accion real de parametros
-$params = explode('/', $action);
-
+$params = explode('/',$action);
+session_start();    
 switch ($params[0]) {
-    case 'listar':
-        $controller = new viajesContralador();
-        $controller->mostraViaje();
+    case 'inicio': 
+        $controladorGeneral->mostraInicio();
+        break;
+    case 'listarViajes':
+        $controllerViajes->mostraViajes();
+        break;
+    case 'verMasViajes':
+        $controllerViajes->mostrarViaje($params[1]);
+        break;
+    case 'formularioViajes':
+        $controllerViajes->mostrarformViajes();
         break;
     case 'nuevo-viaje':
- $controller = new viajesContralador();
-        $controller->agregarViaje();
+        if($autenticar->verificarSecion()){
+            $controllerViajes->agregarViaje();
+        }else{
+            header('Location: ' . BASE_URL . 'login');
+        }
         break;
-    case 'eliminar':
- $controller = new viajesContralador();
-        $controller->borrarViaje($params[1]);
+    case 'eliminarViaje':        
+        if($autenticar->verificarSecion()){
+            $controllerViajes->borrarViaje($params[1]);
+        }else{
+            header('Location: ' . BASE_URL . 'login');
+        }
         break;
-    case 'editar':
-  $controller = new viajesContralador();
-        $controller->editarViaje($id_viaje, $destino_inicio, $destino_fin, $fecha_salida);
+    case 'editarViaje':
+        if($autenticar->verificarSecion()){
+            $controllerViajes->mostarFormEditViaje($params[1]);
+        }else{
+            header('Location: ' . BASE_URL . 'login');
+        }
         break;
-    default: 
-        echo "404 Page Not Found"; // deberiamos llamar a un controlador que maneje esto
+    case 'modificarViaje':
+        if($autenticar->verificarSecion()){
+            $controllerViajes->modificarViaje($params[1]);
+        }else{
+            header('Location: ' . BASE_URL . 'login');
+        }
+        break;
+    case 'login':
+        $autenticar->mostrarLogin();
+        break;
+    case 'autentificación':
+        $autenticar->autentificacion();
+        break;
+    case 'cerrarSecion':
+        $autenticar->logout();
+        break;
+    default:
+        $controladorGeneral->mostarErores("La pagina que busca no esta disponible"); // deberiamos llamar a un controlador que maneje esto
         break;
 }

@@ -1,18 +1,51 @@
 <?php require 'templates/layout/hedader.phtml' ?>
 
-<?php require 'templates/viajes/formulario_viajes.phtml' ?>
 
-<ul>
-    <?php foreach ($viajes as $viaje): ?>
-        <li> 
-                  
-            <?= $viaje->destino_inicio ?> a <?= $viaje->destino_fin ?> a las: <?= $viaje->fecha_salida ?>
+<div class="d-flex flex-row justify-content-center mb-3">
+    <div class="p-2">
+        <h1 class="display-6">Viajes</h1>
+    </div>
+</div>
 
-        <a href="eliminar/<?= $viaje->id ?>" type="button">Borrar</a>    
-        </li>
 
-    <?php endforeach ?>
-</ul>
+<div class="m-5">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Destino de Inicio</th>
+                <th>Destino de Fin</th>
+                <th> </th>
+                <th> </th>
+                <th>
+                    <div class="d-flex flex-row">
+
+                        <ul class="navbar-nav d-flex flex-row">
+                            <?php if(!empty($_SESSION['ID_USER'])):?> <li class="nav-item"><a href="<?= BASE_URL ?>formularioViajes" type="button" class="btn btn-success">Insertar</a></li><?php endif;?>
+                        </ul>
+
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($viajes as $viaje): ?>
+                <tr>
+                    <td class="m-0"><?= $viaje->destino_inicio ?></td>
+                    <td class="m-0"><?= $viaje->destino_fin ?></td>
+                    <td>
+                        <?php if(!empty($_SESSION['ID_USER'])):?> <a href="<?= BASE_URL ?>eliminarViaje/<?=$viaje->id_viaje?>" type="button" id="borrar_tab" class="btn btn-outline-danger">Borrar</a><?php endif;?>
+                    </td>
+                    <td>
+                        <?php if(!empty($_SESSION['ID_USER'])):?> <a href="<?= BASE_URL ?>editarViaje/<?=$viaje->id_viaje?>" type="button" id="editar_tab" class="btn btn-outline-success">Editar</a><?php endif;?>
+                    </td>
+                    <td>
+                        <a href="<?= BASE_URL ?>verMasViajes/<?=$viaje->id_viaje?>" type="button" id="ver_mas_tab" class="btn btn-outline-success">Ver Más</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 
 
 <?php require 'templates/layout/pieDepagina.phtml' ?>

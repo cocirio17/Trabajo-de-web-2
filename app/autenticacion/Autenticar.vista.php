@@ -1,9 +1,9 @@
 <?php
-// rutas 
+require_once 'app/autenticacion/Autenticar.controlador.php';
 class AutenticarVista {
 
     public function mostrarLogin($error = null){
-        require './templates/autenticar/iniciarSecion.phtml';
+        require './templates/general/iniciarSecion.phtml';
     }
 
     public function logoutAviso(){

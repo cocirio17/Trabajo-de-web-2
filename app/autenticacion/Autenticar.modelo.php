@@ -1,5 +1,6 @@
 <?php
-// rutas
+require_once 'app/autenticacion/Autenticar.controlador.php';
+
 class AutenticarModelo {
     
     private $db;

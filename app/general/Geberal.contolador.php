@@ -13,5 +13,8 @@ class generalContralador{
     public function mostraInicio(){
         return $this->vistas->mostraInicio();
     }
+    public function mostarErores($errores){
+        return $this->vistas->mostarErores($errores);
+    }
 
 }

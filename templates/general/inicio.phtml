@@ -1,6 +1,134 @@
 <?php require 'templates/layout/hedader.phtml' ?>
 
-holaa
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Colectivos de Larga Distancia</h1>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h2>¿Qué son los colectivos de larga distancia?</h2>
+            <p class="fade-in">
+                Los colectivos de larga distancia son una opción de transporte popular para viajar entre ciudades y regiones. 
+                Ofrecen comodidad y accesibilidad a precios competitivos, permitiendo que los pasajeros se desplacen 
+                de manera eficiente a destinos lejanos.
+            </p>
+            <p class="fade-in">
+                Estos vehículos están equipados con asientos reclinables, aire acondicionado, baños y, en muchos casos, 
+                servicios de entretenimiento a bordo, como wifi y pantallas individuales. Además, muchas empresas ofrecen 
+                opciones de catering para hacer que el viaje sea más placentero.
+            </p>
+        </div>
+    </div>
 
+    <h2 class="mt-5">Beneficios de viajar en colectivo</h2>
+    <ul class="list-group fade-in">
+        <li class="list-group-item" onclick="toggleDetails(this)">1. Costo accesible en comparación con otros medios de transporte. <span class="toggle-text">Ver más</span>
+            <div class="details" style="display:none;">Detalles: Los precios suelen ser más bajos que los de trenes o aviones.</div>
+        </li>
+        <li class="list-group-item" onclick="toggleDetails(this)">2. Menor impacto ambiental en comparación con los automóviles individuales. <span class="toggle-text">Ver más</span>
+            <div class="details" style="display:none;">Detalles: Menos emisiones de CO2 por pasajero.</div>
+        </li>
+        <li class="list-group-item" onclick="toggleDetails(this)">3. Oportunidad de conocer nuevas personas y hacer amigos. <span class="toggle-text">Ver más</span>
+            <div class="details" style="display:none;">Detalles: Posibilidad de compartir experiencias de viaje.</div>
+        </li>
+        <li class="list-group-item" onclick="toggleDetails(this)">4. Mayor comodidad y menos estrés que conducir. <span class="toggle-text">Ver más</span>
+            <div class="details" style="display:none;">Detalles: Puedes relajarte durante el viaje.</div>
+        </li>
+        <li class="list-group-item" onclick="toggleDetails(this)">5. Posibilidad de descansar durante el viaje. <span class="toggle-text">Ver más</span>
+            <div class="details" style="display:none;">Detalles: Ideal para viajes largos.</div>
+        </li>
+    </ul>
+
+    <h2 class="mt-5">Consejos para viajar en colectivo</h2>
+    <ol class="list-group fade-in">
+        <li class="list-group-item" onclick="toggleDetails(this)">1. Reserva tus pasajes con anticipación para asegurar tu lugar. <span class="toggle-text">Ver más</span>
+            <div class="details" style="display:none;">Detalles: Evita sorpresas en la terminal.</div>
+        </li>
+        <li class="list-group-item" onclick="toggleDetails(this)">2. Llega al terminal con tiempo suficiente para evitar contratiempos. <span class="toggle-text">Ver más</span>
+            <div class="details" style="display:none;">Detalles: Las llegadas tardías pueden causar problemas.</div>
+        </li>
+        <li class="list-group-item" onclick="toggleDetails(this)">3. Lleva contigo una botella de agua y algunos snacks. <span class="toggle-text">Ver más</span>
+            <div class="details" style="display:none;">Detalles: Mantente hidratado y alimentado durante el viaje.</div>
+        </li>
+        <li class="list-group-item" onclick="toggleDetails(this)">4. No olvides tus dispositivos de entretenimiento y auriculares. <span class="toggle-text">Ver más</span>
+            <div class="details" style="display:none;">Detalles: Escucha música o mira películas para pasar el tiempo.</div>
+        </li>
+        <li class="list-group-item" onclick="toggleDetails(this)">5. Respeta las normas y horarios de la empresa de transporte. <span class="toggle-text">Ver más</span>
+            <div class="details" style="display:none;">Detalles: Ayuda a mantener el orden y la puntualidad.</div>
+        </li>
+    </ol>
+
+    <h2 class="mt-5">Empresas recomendadas</h2>
+    <p class="fade-in">
+        Algunas de las empresas de colectivos de larga distancia más reconocidas en el país son:
+    </p>
+    <ul class="list-group fade-in">
+        <li class="list-group-item">- Empresa 1: Servicio de primera calidad y confort.</li>
+        <li class="list-group-item">- Empresa 2: Tarifas competitivas y buena atención al cliente.</li>
+        <li class="list-group-item">- Empresa 3: Rutas extensas y vehículos modernos.</li>
+    </ul>
+</div>
+
+<style>
+    /* Animación de desvanecimiento */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Cambiar el color de fondo y los bordes de los elementos de la lista */
+    .list-group-item {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+    }
+
+    /* Cambiar el color del encabezado principal */
+    h1 {
+        color: inherit; /* Eliminar color */
+    }
+
+    /* Color de texto de las listas */
+    .list-group-item:hover {
+        background-color: #e9ecef; /* Color gris claro al pasar el mouse */
+    }
+
+    .details {
+        margin-top: 5px;
+        font-size: 0.9em;
+        color: #555; /* Color gris para el texto de detalles */
+    }
+
+    .toggle-text {
+        font-weight: bold; /* Estilo para el texto de "Ver más" */
+        color: #007bff; /* Color azul para el texto de "Ver más" */
+        cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+    }
+</style>
+
+<script>
+    function toggleDetails(item) {
+        const details = item.querySelector('.details');
+        const toggleText = item.querySelector('.toggle-text');
+
+        if (details) {
+            if (details.style.display === 'none') {
+                details.style.display = 'block'; // Muestra los detalles
+                toggleText.textContent = 'Ver menos'; // Cambia el texto a "Ver menos"
+            } else {
+                details.style.display = 'none'; // Oculta los detalles
+                toggleText.textContent = 'Ver más'; // Cambia el texto a "Ver más"
+            }
+        }
+    }
+</script>
 
 <?php require 'templates/layout/pieDepagina.phtml' ?>

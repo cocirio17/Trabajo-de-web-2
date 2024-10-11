@@ -5,30 +5,50 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>VíaExpress</title>
 
 </head>
 
 <body class="cuerpo">
     <header>
-        <div class="logos">
-        </div>
-        <div class="boton-menu">
-            <button id="boton-menu-js">≡</button>
-            <nav class="barra-de-navegacion">
-                <ul class="encabezado-de-la-pagina">
-                    <li>
-                        <button type="button" id="traer_inicio">Inicio</button>
-                    </li>
-                    <li>
-                        <button type="button" id="traer_horario_cole">inicia secion</button>
-                    </li>
-                    <li>
-                        <button type="button" id="traer_comodidad">lista</button>
-                    </li>
-                </ul>
-            </nav>
+        <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+            <div class="container-fluid">
+                <!-- Marca de la navbar -->
+                <a class="navbar-brand" href="#">Via Expres</a>
+
+                <!-- Nombre del usuario, alineado a la derecha -->
+                <?php if (!empty($_SESSION['ID_USER'])): ?>
+                    <span class="navbar-text ms-auto text-white">
+                        Bienvenido, <?= htmlspecialchars($_SESSION['USER_NAME']) ?>
+                    </span>
+                <?php endif; ?>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="<?= BASE_URL ?>">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= BASE_URL ?>listarViajes">Viajes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pasajeros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= BASE_URL ?>login">Iniciar sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <?php if (!empty($_SESSION['ID_USER'])): ?><a class="nav-link" href="cerrarSecion">cerrar sesión</a><?php endif; ?>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         </div>
     </header>
-
     <main>
