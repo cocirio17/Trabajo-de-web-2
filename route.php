@@ -8,7 +8,7 @@ require_once './app/general/Geberal.contolador.php';
 // base_url para redirecciones y base tag
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
  
-$autenticar = new AuthController();
+$autenticar = new ControlAutenticar();
 $controllerViajes = new viajesContralador();
 $controladorGeneral = new generalContralador();
 
