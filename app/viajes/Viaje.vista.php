@@ -21,4 +21,7 @@ class viajeVista{
     public function mostrarErrores($errores){
         require_once 'templates/viajes/errores.phtml';
     }
+    public function mostrarViajeXPersona($viajes, $persona){
+        require_once 'templates/viajes/tabla.viaje.phtml';
+    }
 }

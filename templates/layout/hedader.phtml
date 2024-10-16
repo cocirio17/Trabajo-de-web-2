@@ -37,13 +37,13 @@
                             <a class="nav-link" href="<?= BASE_URL ?>listarViajes">Viajes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pasajeros</a>
+                            <a class="nav-link" href="<?= BASE_URL ?>mostrarPersonas">Pasajeros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= BASE_URL ?>login">Iniciar sesión</a>
                         </li>
                         <li class="nav-item">
-                            <?php if (!empty($_SESSION['ID_USER'])): ?><a class="nav-link" href="cerrarSecion">cerrar sesión</a><?php endif; ?>
+                            <?php if (!empty($_SESSION['ID_USER'])): ?><a class="nav-link" href="cerrarSecion">Cerrar sesión</a><?php endif; ?>
                         </li>
                     </ul>
                 </div>

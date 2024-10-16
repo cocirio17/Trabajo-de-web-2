@@ -99,4 +99,9 @@ class viajesContralador{
         $this->modelo->borrarViaje($id);
         header('Location: ' . BASE_URL . 'listarViajes');
     }
+    public function verViajexPersona($persona) {
+        $viaje = $this->modelo->mostrarViajeXArtista($persona);
+        $person = $this->modelo->verPersona($persona); 
+        $this->vistas->mostrarViajeXPersona($viaje,$person);
+    }
 }

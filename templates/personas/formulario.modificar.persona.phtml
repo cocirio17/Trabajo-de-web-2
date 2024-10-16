@@ -1,0 +1,54 @@
+<?php require 'templates/layout/hedader.phtml'; ?>
+
+<div class="container mt-5">
+    <h2 class="display-6 text-center mb-4">Detalles de la Persona</h2>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Nombre:</strong> <?= $persona->nombre ?></li>
+                <li class="list-group-item"><strong>Apellido:</strong> <?= $persona->apellido ?></li>
+                <li class="list-group-item"><strong>DNI:</strong> <?= $persona->dni ?></li>
+                <li class="list-group-item"><strong>Edad:</strong> <?= $persona->edad ?></li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 class="display-6 text-center mb-4">Editar Persona</h2>
+    
+    <div class="card">
+        <div class="card-body">
+            <form action="<?= BASE_URL ?>editPersona/<?= $id_persona ?>" method="POST" class="row g-3 needs-validation" novalidate>
+                <div class="col-md-4">
+                    <label for="validationCustom01" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="nombre" value="<?= $persona->nombre ?>" required>
+                    <div class="invalid-feedback">Por favor, ingresa un nombre válido.</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="validationCustom02" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="validationCustom02" name="apellido" value="<?= $persona->apellido ?>" required>
+                    <div class="invalid-feedback">Por favor, ingresa un apellido válido.</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="validationCustom03" class="form-label">DNI</label>
+                    <input type="number" class="form-control" id="validationCustom03" name="dni" value="<?= $persona->dni ?>" required>
+                    <div class="invalid-feedback">Por favor, ingresa un DNI válido.</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="validationCustom04" class="form-label">Edad</label>
+                    <input type="number" class="form-control" id="validationCustom04" name="edad" value="<?= $persona->edad ?>" required>
+                    <div class="invalid-feedback">Por favor, ingresa una edad válida.</div>
+                </div>
+
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary" type="submit">Actualizar Persona</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php require 'templates/layout/pieDepagina.phtml'; ?>

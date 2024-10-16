@@ -1,0 +1,41 @@
+<?php require 'templates/layout/hedader.phtml'; ?>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Agregar Persona</h1>
+    
+    <div class="card">
+        <div class="card-body">
+            <form action="nuevaPersona" method="POST" class="row g-3 needs-validation" novalidate>
+                <div class="col-md-4">
+                    <label for="validationCustom01" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="nombre" required>
+                    <div class="invalid-feedback">Por favor, ingresa un nombre válido.</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="validationCustom02" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="validationCustom02" name="apellido" required>
+                    <div class="invalid-feedback">Por favor, ingresa un apellido válido.</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="validationCustom03" class="form-label">DNI</label>
+                    <input type="number" class="form-control" id="validationCustom03" name="dni" required>
+                    <div class="invalid-feedback">Por favor, ingresa un DNI válido.</div>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="validationCustom04" class="form-label">Edad</label>
+                    <input type="number" class="form-control" id="validationCustom04" name="edad" required>
+                    <div class="invalid-feedback">Por favor, ingresa una edad válida.</div>
+                </div>
+
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary" type="submit">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php require 'templates/layout/pieDepagina.phtml'; ?>

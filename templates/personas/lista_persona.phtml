@@ -2,40 +2,40 @@
 
 <div class="d-flex flex-row justify-content-center mb-4">
     <div class="p-2">
-        <h1 class="display-6 text-center text-primary">Viajes</h1>
+        <h1 class="display-6 text-center text-primary">Pasajeros</h1>
     </div>
 </div>
 
 <div class="container-fluid">
-    <div class="table-responsive m-3">
+    <div class="table-responsive m-3"> 
         <table class="table table-striped table-hover w-100">
             <thead class="table-dark">
                 <tr>
-                    <th>Destino de Inicio</th>
-                    <th>Destino de Fin</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
                     <th class="text-center">Acciones</th>
                     <th>
                         <?php if (!empty($_SESSION['ID_USER'])): ?>
-                            <a href="<?= BASE_URL ?>formularioViajes" class="btn btn-success btn-sm">Insertar</a>
+                            <a href="<?= BASE_URL ?>formularioPersona" class="btn btn-success btn-sm">Insertar</a>
                         <?php endif; ?>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($viajes as $viaje): ?>
+                <?php foreach ($personas as $persona): ?>
                     <tr>
-                        <td><?= htmlspecialchars($viaje->destino_inicio) ?></td>
-                        <td><?= htmlspecialchars($viaje->destino_fin) ?></td>
+                        <td><?= $persona->nombre ?></td>
+                        <td><?= $persona->apellido ?></td>
                         <td class="text-center">
                             <?php if (!empty($_SESSION['ID_USER'])): ?>
                                 <div class="btn-group" role="group">
-                                    <a href="<?= BASE_URL ?>eliminarViaje/<?= $viaje->id_viaje ?>" class="btn btn-outline-danger btn-sm" title="Borrar viaje">Borrar</a>
-                                    <a href="<?= BASE_URL ?>editarViaje/<?= $viaje->id_viaje ?>" class="btn btn-outline-success btn-sm" title="Editar viaje">Editar</a>
+                                    <a href="<?= BASE_URL ?>eliminarPersona/<?= $persona->id_pasajero ?>" class="btn btn-outline-danger btn-sm" title="Borrar pasajero">Borrar</a>
+                                    <a href="<?= BASE_URL ?>mostrarFormEditPersona/<?= $persona->id_pasajero ?>" class="btn btn-outline-success btn-sm" title="Editar pasajero">Editar</a>
                                 </div>
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a href="<?= BASE_URL ?>verMasViajes/<?= $viaje->id_viaje ?>" class="btn btn-outline-primary btn-sm">Ver Más</a>
+                            <a href="<?= BASE_URL ?>viajesPorPersonas/<?= $persona->id_pasajero ?>" class="btn btn-outline-primary btn-sm">Ver Viajes</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

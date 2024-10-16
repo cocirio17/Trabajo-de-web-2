@@ -1,5 +1,5 @@
 <?php
-class viajeModelo{
+class personasModelo{
     private $db;
     public function __construct(){
         $this->db = new PDO('mysql:host=localhost;dbname=coletivo;charset=utf8', 'root', '');
@@ -37,30 +37,26 @@ class viajeModelo{
     
 
     //insertar a la DB 
-    public function agregarViaje($destino_inicio, $destino_fin, $fecha_salida,$precio, $id_pasajero) { 
-        $query = $this->db->prepare('INSERT INTO viaje(destino_inicio, destino_fin, fecha_salida, precio, id_pasajero) VALUES (?, ?, ?, ?, ?)');
-        $query->execute([$destino_inicio, $destino_fin, $fecha_salida, $precio, $id_pasajero]);    
-        $id = $this->db->lastInsertId();// ID de la último que fue agrego a la base de datos   
-        return $id;
+    public function agregarPersona($nombre, $apellido, $dni, $edad) { 
+        $query = $this->db->prepare('INSERT INTO personas (dni, nombre, apellido, edad) VALUES (?, ?, ?, ?)');
+        $query->execute([$dni, $nombre, $apellido, $edad]);    
+        $id_pasajero = $this->db->lastInsertId(); 
+        return $id_pasajero;
     }
+    
+    
 
     // editar de la DB
-    public function editarViaje($id_viaje, $destino_inicio, $destino_fin, $fecha_salida, $precio, $id_pasajero) { 
-        $query = $this->db->prepare('UPDATE `viaje` SET destino_inicio = ?, destino_fin = ?, fecha_salida = ?, precio = ?, id_pasajero = ? WHERE viaje.id_viaje = ?');
-        $query->execute([$destino_inicio, $destino_fin, $fecha_salida, $precio, $id_pasajero, $id_viaje]);
+    public function editarPersona($id_pasajero, $nombre, $apellido, $dni, $edad) { 
+        $query = $this->db->prepare('UPDATE personas SET dni = ?, nombre = ?, apellido = ?, edad = ? WHERE id_pasajero = ?');
+        $query->execute([$dni, $nombre, $apellido, $edad, $id_pasajero]);
     }
+    
     
     // borrar de la DB
-    public function borrarViaje($id){
-        $query = $this->db->prepare('DELETE FROM viaje WHERE id_viaje = ?');
+    public function borrarPersona($id){
+        $query = $this->db->prepare('DELETE FROM personas WHERE id_pasajero = ?');
         $query->execute([$id]);
-    }
-    
-    public function mostrarViajeXArtista($id_persona){
-        $query = $this->db->prepare('SELECT * FROM viaje WHERE viaje.id_pasajero = ?');
-        $query->execute([$id_persona]);
-        $viaje = $query->fetchAll(PDO::FETCH_OBJ);
-        return $viaje;
     }
 
 
