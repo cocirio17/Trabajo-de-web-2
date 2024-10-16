@@ -3,7 +3,7 @@ require_once 'app/autenticacion/Autenticar.vista.php';
 require_once 'app/autenticacion/Autenticar.modelo.php';
 
 
-class AuthController {
+class ControlAutenticar {
     private $modelo;
     private $vista;
 

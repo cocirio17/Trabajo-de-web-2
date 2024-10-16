@@ -10,7 +10,7 @@ class viajesContralador{
     public function __construct(){
         $this->modelo = new viajeModelo();
         $this->vistas = new viajeVista();
-        $this->autenticar = new AuthController();
+        $this->autenticar = new ControlAutenticar();
     }
 
     public function mostraViajes(){
@@ -39,9 +39,7 @@ class viajesContralador{
     }
 
     public function agregarViaje(){
-        if ($this->autenticar->verificarSecion()) {   
-
-            // verificacion si esta logeado
+        if ($this->autenticar->verificarSecion()) {
             if (!isset($_POST['destino_inicio']) || empty($_POST['destino_inicio']) ||
                 !isset($_POST['destino_fin']) || empty($_POST['destino_fin']) ||
                 !isset($_POST['fecha_salida']) || empty($_POST['fecha_salida']) ||
@@ -68,8 +66,7 @@ class viajesContralador{
             return $this->vistas->mostrarErrores('El viaje que esta buscando no esta disponible');
         }
         
-        $id_persona = $viaje->id_pasajero;
-        $persona = $this->modelo->verPersona($id_persona);
+        $persona = $this->modelo->verPersona($viaje->id_pasajero);
         $pasajeros = $this->modelo->verPersonas();
         $this->vistas->formEditViaje($id_viaje, $viaje , $persona, $pasajeros);
     }
@@ -95,7 +92,6 @@ class viajesContralador{
     }
 
     public function borrarViaje($id){
-        // verificacion si esta logeado
         $viaje = $this->modelo->verViaje($id);
         if (!$viaje) {
             return $this->vistas->mostrarErrores("No existe la viaje con el id=$id");

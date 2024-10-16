@@ -27,18 +27,16 @@ class viajeModelo{
         $pasajero = $query->fetchAll(PDO::FETCH_OBJ);
         return $pasajero;
     }
+    
     public function verPersona($id_pasajero){
         $query = $this->db->prepare('SELECT * FROM personas WHERE id_pasajero = ?');
         $query->execute([$id_pasajero]);      
         $personas = $query->fetch(PDO::FETCH_OBJ);    
         return $personas;
-
-    }
-    
+    }  
     
 
     //insertar a la DB 
-    // ERROR EN AGREGAR ELEMENTO
     public function agregarViaje($destino_inicio, $destino_fin, $fecha_salida,$precio, $id_pasajero) { 
         $query = $this->db->prepare('INSERT INTO viaje(destino_inicio, destino_fin, fecha_salida, precio, id_pasajero) VALUES (?, ?, ?, ?, ?)');
         $query->execute([$destino_inicio, $destino_fin, $fecha_salida, $precio, $id_pasajero]);    
