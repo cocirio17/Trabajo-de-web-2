@@ -37,17 +37,34 @@ class viajeModelo{
     
 
     //insertar a la DB 
-    public function agregarViaje($destino_inicio, $destino_fin, $fecha_salida,$precio, $id_pasajero) { 
-        $query = $this->db->prepare('INSERT INTO viaje(destino_inicio, destino_fin, fecha_salida, precio, id_pasajero) VALUES (?, ?, ?, ?, ?)');
-        $query->execute([$destino_inicio, $destino_fin, $fecha_salida, $precio, $id_pasajero]);    
+    public function agregarViaje($destino_inicio, $destino_fin, $fecha_salida,$precio, $id_pasajero, $imagen = null) { 
+        if($imagen){
+            $img =$this->descargarimg($imagen); 
+        }
+        $query = $this->db->prepare('INSERT INTO viaje(destino_inicio, destino_fin, fecha_salida, precio, id_pasajero, imagen) VALUES (?, ?, ?, ?, ?, ?)');
+        
+        $query->execute([$destino_inicio, $destino_fin, $fecha_salida, $precio, $id_pasajero, $img]);    
+        
         $id = $this->db->lastInsertId();// ID de la último que fue agrego a la base de datos   
+        
         return $id;
     }
+    private function descargarimg($img){
+
+        // cambiar a epañolsito
+        $target = 'img/' . uniqid() . '.jpg';
+        move_uploaded_file($img, $target);
+        return $target;
+    }
+
 
     // editar de la DB
-    public function editarViaje($id_viaje, $destino_inicio, $destino_fin, $fecha_salida, $precio, $id_pasajero) { 
-        $query = $this->db->prepare('UPDATE `viaje` SET destino_inicio = ?, destino_fin = ?, fecha_salida = ?, precio = ?, id_pasajero = ? WHERE viaje.id_viaje = ?');
-        $query->execute([$destino_inicio, $destino_fin, $fecha_salida, $precio, $id_pasajero, $id_viaje]);
+    public function editarViaje($id_viaje, $destino_inicio, $destino_fin, $fecha_salida, $precio, $id_pasajero, $imagen = null) { 
+        if($imagen){
+            $img =$this->descargarimg($imagen); 
+        }
+        $query = $this->db->prepare('UPDATE `viaje` SET destino_inicio = ?, destino_fin = ?, fecha_salida = ?, precio = ?, id_pasajero = ?, imagen = ? WHERE viaje.id_viaje = ?');
+        $query->execute([$destino_inicio, $destino_fin, $fecha_salida, $precio, $id_pasajero, $img, $id_viaje]);
     }
     
     // borrar de la DB

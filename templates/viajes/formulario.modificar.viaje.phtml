@@ -2,7 +2,7 @@
 
 <div class="container mt-5">
     <h2 class="display-6 text-center mb-4">Detalles del Viaje</h2>
-    
+
     <div class="card mb-4">
         <div class="card-body">
             <ul class="list-group list-group-flush">
@@ -11,43 +11,53 @@
                 <li class="list-group-item"><strong>Fecha de Salida:</strong> <?= $viaje->fecha_salida ?></li>
                 <li class="list-group-item"><strong>Precio:</strong> $<?= $viaje->precio ?> ARS</li>
                 <li class="list-group-item"><strong>Pasajeros:</strong> <?= $persona->nombre ?> <?= $persona->apellido ?></li>
+                <?php if (!empty($viaje->imagen)): ?> <li class="list-group-item"><strong>imagen:</strong> <img width="400px" src="<?= BASE_URL . $viaje->imagen ?>">
+                    <?php endif; ?>
             </ul>
         </div>
     </div>
+</div>
 
-    <h2 class="display-6 text-center mb-4">Editar Viaje</h2>
-    
-    <div class="card">
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Editar Viaje</h1> 
+    <div class="card shadow-sm">
         <div class="card-body">
-            <form action="<?= BASE_URL ?>modificarViaje/<?= $id_viaje ?>" method="POST" class="row g-3 needs-validation" novalidate>
-                <div class="col-md-4">
+            <form action="<?= BASE_URL ?>modificarViaje/<?= $id_viaje ?>" method="POST" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
+
+                <!-- Destino de Inicio -->
+                <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Destino de Inicio</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="destino_inicio" value="<?= $viaje->destino_inicio ?>" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="destino_inicio" placeholder="Ingrese destino de inicio" value="<?= $viaje->destino_inicio ?>" required>
                     <div class="invalid-feedback">Por favor, ingresa un destino de inicio válido.</div>
                 </div>
 
-                <div class="col-md-4">
+                <!-- Destino de Fin -->
+                <div class="col-md-6">
                     <label for="validationCustom02" class="form-label">Destino de Fin</label>
-                    <input type="text" class="form-control" id="validationCustom02" name="destino_fin" value="<?= $viaje->destino_fin ?>" required>
+                    <input type="text" class="form-control" id="validationCustom02" name="destino_fin" placeholder="Ingrese destino de fin" value="<?= $viaje->destino_fin ?>" required>
                     <div class="invalid-feedback">Por favor, ingresa un destino de fin válido.</div>
                 </div>
 
-                <div class="col-md-4">
+                <!-- Fecha de Viaje -->
+                <div class="col-md-6">
                     <label for="validationCustomUsername" class="form-label">Fecha de Viaje</label>
                     <input type="date" class="form-control" id="validationCustomUsername" name="fecha_salida" value="<?= $viaje->fecha_salida ?>" required>
                     <div class="invalid-feedback">Por favor, selecciona una fecha de viaje válida.</div>
                 </div>
 
-                <div class="col-md-3">
+                <!-- Precio del Viaje -->
+                <div class="col-md-6">
                     <label for="validationCustom03" class="form-label">Precio del Viaje</label>
-                    <input type="number" class="form-control" id="validationCustom03" name="precio" value="<?= $viaje->precio ?>" required>
+                    <input type="number" class="form-control" id="validationCustom03" name="precio" placeholder="Ingrese precio en pesos" value="<?= $viaje->precio ?>" required>
                     <div class="invalid-feedback">Por favor, ingresa un precio válido.</div>
                 </div>
 
-                <div class="col-md-4">
-                    <label for="id_pasajero" class="form-label">Seleccionar Pasajero</label>
-                    <select class="form-select" name="id_pasajero" id="id_pasajero" required>
-                        <option selected disabled>Seleccione</option>
+                <!-- Selección de Pasajero -->
+                <div class="col-md-6">
+                    <label for="id_personas" class="form-label">Seleccionar Pasajero</label>
+                    <select class="form-select" name="id_pasajero" id="id_personas" required>
+                        <option disabled>Seleccione un pasajero</option>
                         <?php foreach ($pasajeros as $pasajero): ?>
                             <option value="<?= $pasajero->id_pasajero ?>" <?= $pasajero->id_pasajero == $viaje->id_pasajero ? 'selected' : '' ?>>
                                 <?= $pasajero->nombre ?> <?= $pasajero->apellido ?>
@@ -57,12 +67,19 @@
                     <div class="invalid-feedback">Por favor, selecciona un pasajero.</div>
                 </div>
 
-                <div class="col-12 text-center">
-                    <button class="btn btn-primary" type="submit">Actualizar Viaje</button>
+                <!-- Subir Imagen -->
+                <div class="col-md-6">
+                    <label for="imageToUpload" class="form-label">Subir Imagen</label>
+                    <input type="file" class="form-control" name="imagen" id="imageToUpload" accept="image/*">
                 </div>
+
+                <!-- Botón de envío -->
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary" type="submit">Guardar Cambios</button> <!-- Cambié el texto del botón -->
+                </div>
+
             </form>
         </div>
     </div>
 </div>
-
 <?php require 'templates/layout/pieDepagina.phtml'; ?>

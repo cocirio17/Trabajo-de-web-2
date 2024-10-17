@@ -11,6 +11,12 @@
                 <li class="list-group-item"><strong>Fecha de Salida:</strong> <?= $viaje->fecha_salida ?></li>
                 <li class="list-group-item"><strong>Precio:</strong> $<?= $viaje->precio ?> ARS</li>
                 <li class="list-group-item"><strong>Pasajeros:</strong> <?= $persona->nombre ?> <?= $persona->apellido ?></li>
+
+
+                <?php if (!empty($viaje->imagen)): ?> <li class="list-group-item"><strong>imagen:</strong> <img width="400px" src="<?= BASE_URL . $viaje->imagen ?>">
+                    <?php endif; ?>
+
+
             </ul>
         </div>
     </div>

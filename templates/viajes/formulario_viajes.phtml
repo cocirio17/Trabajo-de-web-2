@@ -3,37 +3,43 @@
 <div class="container mt-5">
     <h1 class="text-center mb-4">Agregar Nuevo Viaje</h1>
     
-    <div class="card">
+    <div class="card shadow-sm">
         <div class="card-body">
-            <form action="nuevo-viaje" method="POST" class="row g-3 needs-validation" novalidate>
-                <div class="col-md-4">
+            <form action="nuevoViaje" method="POST" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
+                
+                <!-- Destino de Inicio -->
+                <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Destino de Inicio</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="destino_inicio" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="destino_inicio" placeholder="Ingrese destino de inicio" required>
                     <div class="invalid-feedback">Por favor, ingresa un destino de inicio válido.</div>
                 </div>
 
-                <div class="col-md-4">
+                <!-- Destino de Fin -->
+                <div class="col-md-6">
                     <label for="validationCustom02" class="form-label">Destino de Fin</label>
-                    <input type="text" class="form-control" id="validationCustom02" name="destino_fin" required>
+                    <input type="text" class="form-control" id="validationCustom02" name="destino_fin" placeholder="Ingrese destino de fin" required>
                     <div class="invalid-feedback">Por favor, ingresa un destino de fin válido.</div>
                 </div>
 
-                <div class="col-md-4">
+                <!-- Fecha de Viaje -->
+                <div class="col-md-6">
                     <label for="validationCustomUsername" class="form-label">Fecha de Viaje</label>
                     <input type="date" class="form-control" id="validationCustomUsername" name="fecha_salida" required>
                     <div class="invalid-feedback">Por favor, selecciona una fecha de viaje válida.</div>
                 </div>
 
-                <div class="col-md-3">
+                <!-- Precio del Viaje -->
+                <div class="col-md-6">
                     <label for="validationCustom03" class="form-label">Precio del Viaje</label>
-                    <input type="number" class="form-control" id="validationCustom03" name="precio" required>
+                    <input type="number" class="form-control" id="validationCustom03" name="precio" placeholder="Ingrese precio en pesos" required>
                     <div class="invalid-feedback">Por favor, ingresa un precio válido.</div>
                 </div>
 
-                <div class="col-md-4">
+                <!-- Selección de Pasajero -->
+                <div class="col-md-6">
                     <label for="id_personas" class="form-label">Seleccionar Pasajero</label>
                     <select class="form-select" name="id_personas" id="id_personas" required>
-                        <option selected disabled>Seleccione</option>
+                        <option selected disabled>Seleccione un pasajero</option>
                         <?php foreach ($pasajeros as $pasajero): ?>
                             <option value="<?= $pasajero->id_pasajero ?>"><?= $pasajero->nombre ?> <?= $pasajero->apellido; ?></option>
                         <?php endforeach; ?>
@@ -41,9 +47,17 @@
                     <div class="invalid-feedback">Por favor, selecciona un pasajero.</div>
                 </div>
 
-                <div class="col-12 text-center">
-                    <button class="btn btn-primary" type="submit">Agregar</button>
+                <!-- Subir Imagen -->
+                <div class="col-md-6">
+                    <label for="imageToUpload" class="form-label">Subir Imagen</label>
+                    <input type="file" class="form-control" name="imagen" id="imageToUpload" accept="image/*">
                 </div>
+
+                <!-- Botón de envío -->
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary" type="submit">Agregar Viaje</button>
+                </div>
+
             </form>
         </div>
     </div>
