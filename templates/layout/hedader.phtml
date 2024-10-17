@@ -43,7 +43,7 @@
                             <a class="nav-link" href="<?= BASE_URL ?>login">Iniciar sesión</a>
                         </li>
                         <li class="nav-item">
-                            <?php if (!empty($_SESSION['ID_USER'])): ?><a class="nav-link" href="cerrarSecion">Cerrar sesión</a><?php endif; ?>
+                            <?php if (!empty($_SESSION['ID_USER'])): ?><a class="nav-link" href="<?=BASE_URL?>cerrarSecion">Cerrar sesión</a><?php endif; ?>
                         </li>
                     </ul>
                 </div>
