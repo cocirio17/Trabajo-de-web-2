@@ -27,16 +27,16 @@ La **base de datos** está organizada en dos secciones:
 > **Navegación libre para los usuarios.**
 
 - **📄 Listado de Viajes**: Muestra todos los viajes disponibles.  
-  - URL: `http://localhost/ejerciscos/TP_web2/TP_web2/listarViajes`
+  - URL: `/listarViajes`
 
 - **🔍 Detalle de Viaje**: Información completa de cada viaje.
-  - URL: `http://localhost/ejerciscos/TP_web2/TP_web2/verMasViajes/2`
+  - URL: `/verMasViajes/:ID`
 
 - **👥 Listado de Pasajeros**: Visualización de los pasajeros registrados.  
-  - URL: `http://localhost/ejerciscos/TP_web2/TP_web2/mostrarPersonas`
+  - URL: `/mostrarPersonas`
 
 - **🔗 Viajes por Pasajero**: Ver los viajes realizados por cada pasajero.  
-  - URL: `http://localhost/ejerciscos/TP_web2/TP_web2/viajesPorPersonas/1`
+  - URL: `/viajesPorPersonas/:ID`
 
 ---
 
@@ -44,26 +44,26 @@ La **base de datos** está organizada en dos secciones:
 > **Funciones exclusivas para usuarios administradores**
 
 - **🔑 Iniciar Sesión**:
-  - URL: `http://localhost/ejerciscos/TP_web2/TP_web2/login`
+  - URL: `/login`
 
 - **🔓 Cerrar Sesión**:
-  - URL: `http://localhost/ejerciscos/TP_web2/TP_web2/cerrarSecion`
+  - URL: `/cerrarSecion`
 
 ---
 
 ## **⚙️ Administración de Datos (ABM)**
 
 1. **Administración de Viajes** ✈️  
-   - **Listar Viajes**: URL: `http://localhost/ejerciscos/TP_web2/TP_web2/listarViajes`
-   - **Agregar Viaje**: URL: `http://localhost/ejerciscos/TP_web2/TP_web2/formularioViajes`
-   - **Editar Viaje**: URL: `http://localhost/ejerciscos/TP_web2/TP_web2/editarViaje/2`
-   - **Eliminar Viaje**: URL: `http://localhost/ejerciscos/TP_web2/TP_web2/eliminarViaje/2`
+   - **Listar Viajes**: URL: `/listarViajes`
+   - **Agregar Viaje**: URL: `/formularioViajes`
+   - **Editar Viaje**: URL: `/editarViaje/:ID`
+   - **Eliminar Viaje**: URL: `/eliminarViaje/:ID`
 
 2. **Administración de Pasajeros** 👤  
-   - **Listar Pasajeros**: URL: `http://localhost/ejerciscos/TP_web2/TP_web2/mostrarPersonas`
-   - **Agregar Pasajero**: URL: `http://localhost/ejerciscos/TP_web2/TP_web2/formularioPersona`
-   - **Editar Pasajero**: URL: `http://localhost/ejerciscos/TP_web2/TP_web2/mostrarFormEditPersona/1`
-   - **Eliminar Pasajero**: URL: `http://localhost/ejerciscos/TP_web2/TP_web2/eliminarPersona/1`
+   - **Listar Pasajeros**: URL: `/mostrarPersonas`
+   - **Agregar Pasajero**: URL: `/formularioPersona`
+   - **Editar Pasajero**: URL: `/mostrarFormEditPersona/:ID`
+   - **Eliminar Pasajero**: URL: `/eliminarPersona/:ID`
 
 ---
 
